@@ -1,92 +1,250 @@
 import 'package:flutter/material.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(const FinnTechApp());
 }
 
-class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+class FinnTechApp extends StatelessWidget {
+  const FinnTechApp({super.key});
 
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'FinnTech',
       debugShowCheckedModeBanner: false,
-      home: const WelcomeScreen(),
+      title: 'FinnTech',
+      initialRoute: '/',
+      routes: {
+        '/': (context) => const SplashScreen(),
+        '/login': (context) => const LoginScreen(),
+        '/register': (context) => const RegisterScreen(),
+        '/forgot-password': (context) => const ForgotPasswordScreen(),
+      },
     );
   }
 }
 
-class WelcomeScreen extends StatelessWidget {
-  const WelcomeScreen({super.key});
+class SplashScreen extends StatelessWidget {
+  const SplashScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color(0xFF030014), // Fundo escuro
-      body: SafeArea(
+      backgroundColor: const Color(0xFF0A062F),
+      body: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Image.asset('assets/frutas.png', height: 150),
+            const SizedBox(height: 20),
+            const Text(
+              'FinnTech',
+              style: TextStyle(
+                color: Colors.white,
+                fontSize: 26,
+                fontFamily: 'Courier',
+              ),
+            ),
+            const SizedBox(height: 10),
+            const Text(
+              'Transforme seu pedido saudável\nEncontrando os melhores produtos na nossa loja',
+              textAlign: TextAlign.center,
+              style: TextStyle(color: Colors.white70),
+            ),
+            const SizedBox(height: 30),
+            ElevatedButton(
+              onPressed: () {
+                Navigator.pushNamed(context, '/login');
+              },
+              style: ElevatedButton.styleFrom(
+                backgroundColor: const Color(0xFFFFE44C),
+                padding: const EdgeInsets.symmetric(horizontal: 40, vertical: 12),
+              ),
+              child: const Text('Entrar', style: TextStyle(color: Colors.black)),
+            ),
+            TextButton(
+              onPressed: () {
+                Navigator.pushNamed(context, '/register');
+              },
+              child: const Text('Criar conta', style: TextStyle(color: Color(0xFFFFE44C))),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+class LoginScreen extends StatelessWidget {
+  const LoginScreen({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      backgroundColor: const Color(0xFF0A062F),
+      body: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 24),
         child: Center(
-          child: Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 30.0),
+          child: SingleChildScrollView(
             child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Image.network(
-                  'https://sdmntprwestus.oaiusercontent.com/files/00000000-be00-6230-85d0-a535dc2e3376/raw?se=2025-05-18T23%3A34%3A16Z&sp=r&sv=2024-08-04&sr=b&scid=00000000-0000-0000-0000-000000000000&skoid=9ccea605-1409-4478-82eb-9c83b25dc1b0&sktid=a48cca56-e6da-484e-a814-9c849652bcb3&skt=2025-05-18T00%3A32%3A48Z&ske=2025-05-19T00%3A32%3A48Z&sks=b&skv=2024-08-04&sig=5LOZb9w/p%2B/jg5i7VmUWyYoJXz/Umr0y4T1IpnKVsCs%3D',
-                  width: 150,
-                ),
-                const SizedBox(height: 30),
-                const Text(
-                  'FinnTech',
-                  style: TextStyle(
-                    fontFamily: 'Cursive',
-                    fontSize: 32,
-                    color: Colors.white,
-                    fontWeight: FontWeight.w400,
-                  ),
-                ),
-                const SizedBox(height: 10),
-                const Text(
-                  'Transforme seu espírito escolar',
-                  style: TextStyle(
-                    color: Colors.white70,
-                    fontSize: 14,
-                  ),
-                ),
-                const Text(
-                  'Encontre os melhores produtos na nossa loja',
-                  style: TextStyle(
-                    color: Colors.white70,
-                    fontSize: 12,
-                  ),
-                ),
-                const SizedBox(height: 40),
+                const Text('Entrar', style: TextStyle(color: Colors.white, fontSize: 32, fontFamily: 'Courier')),
+                const Text('FinnEat', style: TextStyle(color: Colors.grey)),
+                const SizedBox(height: 20),
+                const Text('Bem-vindo de volta!\nEntre com a sua conta para continuar', style: TextStyle(color: Colors.white70)),
+                const SizedBox(height: 24),
+                const Text('E-mail', style: TextStyle(color: Colors.white)),
+                const TextField(decoration: InputDecoration(hintText: 'Email*')),
+                const SizedBox(height: 16),
+                const Text('Senha', style: TextStyle(color: Colors.white)),
+                const TextField(obscureText: true, decoration: InputDecoration(hintText: 'Senha*')),
+                const SizedBox(height: 24),
                 ElevatedButton(
                   onPressed: () {},
                   style: ElevatedButton.styleFrom(
-                    backgroundColor: Colors.yellow,
-                    foregroundColor: Colors.black,
-                    minimumSize: const Size.fromHeight(50),
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(30),
-                    ),
+                    backgroundColor: const Color(0xFFFFE44C),
+                    minimumSize: const Size(double.infinity, 48),
                   ),
-                  child: const Text(
-                    'Entrar',
-                    style: TextStyle(fontSize: 18),
-                  ),
+                  child: const Text('Entrar', style: TextStyle(color: Colors.black)),
                 ),
-                const SizedBox(height: 10),
-                TextButton(
-                  onPressed: () {},
-                  child: const Text(
-                    'Criar conta',
-                    style: TextStyle(
-                      color: Colors.yellow,
-                      fontSize: 14,
+                const SizedBox(height: 12),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    TextButton(
+                      onPressed: () {
+                        Navigator.pushNamed(context, '/forgot-password');
+                      },
+                      child: const Text('Esqueceu a senha?', style: TextStyle(color: Color(0xFFFFE44C))),
                     ),
+                    TextButton(
+                      onPressed: () {
+                        Navigator.pushNamed(context, '/register');
+                      },
+                      child: const Text('Cadastre-se', style: TextStyle(color: Color(0xFFFFE44C))),
+                    ),
+                  ],
+                ),
+                const Divider(color: Colors.grey),
+                const Center(child: Text('Logar com', style: TextStyle(color: Colors.white))),
+                const SizedBox(height: 8),
+                const Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Icon(Icons.facebook, color: Colors.blue),
+                    SizedBox(width: 16),
+                    Icon(Icons.g_mobiledata, color: Colors.red),
+                  ],
+                ),
+              ],
+            ),
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+class RegisterScreen extends StatelessWidget {
+  const RegisterScreen({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      backgroundColor: const Color(0xFF0A062F),
+      body: Padding(
+        padding: const EdgeInsets.all(24),
+        child: Center(
+          child: SingleChildScrollView(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                const Text('Criar Conta', style: TextStyle(color: Colors.white, fontSize: 32, fontFamily: 'Courier')),
+                const Text('FinnTech', style: TextStyle(color: Colors.grey)),
+                const SizedBox(height: 32),
+                const Text('Nome completo', style: TextStyle(color: Colors.white)),
+                const TextField(decoration: InputDecoration(hintText: 'Seu nome completo*')),
+                const SizedBox(height: 16),
+                const Text('Email', style: TextStyle(color: Colors.white)),
+                const TextField(decoration: InputDecoration(hintText: 'Email*')),
+                const SizedBox(height: 16),
+                const Text('Celular', style: TextStyle(color: Colors.white)),
+                const TextField(decoration: InputDecoration(hintText: 'Celular*')),
+                const SizedBox(height: 16),
+                const Text('Senha', style: TextStyle(color: Colors.white)),
+                const TextField(obscureText: true, decoration: InputDecoration(hintText: 'Senha*')),
+                const SizedBox(height: 16),
+                const Text('Confirme sua senha', style: TextStyle(color: Colors.white)),
+                const TextField(obscureText: true, decoration: InputDecoration(hintText: 'Confirme sua senha*')),
+                const SizedBox(height: 16),
+                Row(
+                  children: [
+                    Checkbox(value: true, onChanged: (v) {}),
+                    const Expanded(child: Text('Li e aceito os termos de uso e a política de privacidade', style: TextStyle(color: Colors.white70))),
+                  ],
+                ),
+                const SizedBox(height: 16),
+                ElevatedButton(
+                  onPressed: () {},
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: const Color(0xFFFFE44C),
+                    minimumSize: const Size(double.infinity, 48),
                   ),
-                )
+                  child: const Text('Cadastrar', style: TextStyle(color: Colors.black)),
+                ),
+                TextButton(
+                  onPressed: () {
+                    Navigator.pushNamed(context, '/login');
+                  },
+                  child: const Text('Já possui conta? Entre aqui', style: TextStyle(color: Color(0xFFFFE44C))),
+                ),
+              ],
+            ),
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+class ForgotPasswordScreen extends StatelessWidget {
+  const ForgotPasswordScreen({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      backgroundColor: const Color(0xFF0A062F),
+      body: Padding(
+        padding: const EdgeInsets.all(24),
+        child: Center(
+          child: SingleChildScrollView(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                const Text('Recuperar senha', style: TextStyle(color: Colors.white, fontSize: 32, fontFamily: 'Courier')),
+                const Text('FinnTech', style: TextStyle(color: Colors.grey)),
+                const SizedBox(height: 32),
+                const Text('Esqueci a minha senha', style: TextStyle(color: Colors.white, fontSize: 18)),
+                const SizedBox(height: 12),
+                const Text('Informe o e-mail da sua conta para enviarmos um e-mail para redefinir a sua senha.', style: TextStyle(color: Colors.white70)),
+                const SizedBox(height: 16),
+                const Text('Email', style: TextStyle(color: Colors.white)),
+                const TextField(decoration: InputDecoration(hintText: 'Seu email*')),
+                const SizedBox(height: 24),
+                ElevatedButton(
+                  onPressed: () {},
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: const Color(0xFFFFE44C),
+                    minimumSize: const Size(double.infinity, 48),
+                  ),
+                  child: const Text('Enviar', style: TextStyle(color: Colors.black)),
+                ),
+                TextButton(
+                  onPressed: () {
+                    Navigator.pushNamed(context, '/login');
+                  },
+                  child: const Text('< Voltar', style: TextStyle(color: Color(0xFFFFE44C))),
+                ),
               ],
             ),
           ),

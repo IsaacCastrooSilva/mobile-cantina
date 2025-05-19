@@ -1,30 +1,50 @@
-// This is a basic Flutter widget test.
-//
-// To perform an interaction with a widget in your test, use the WidgetTester
-// utility in the flutter_test package. For example, you can send tap and scroll
-// gestures. You can also use WidgetTester to find child widgets in the widget
-// tree, read text, and verify that the values of widget properties are correct.
-
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
-
-import 'package:tcc/main.dart';
+import 'package:tcc/main.dart'; // Atualize o caminho se necessário
 
 void main() {
-  testWidgets('Counter increments smoke test', (WidgetTester tester) async {
-    // Build our app and trigger a frame.
-    await tester.pumpWidget(const MyApp());
+  testWidgets('Splash screen loads and navigates to Login', (WidgetTester tester) async {
+    // Inicializa o app
+    await tester.pumpWidget(const FinnTechApp());
 
-    // Verify that our counter starts at 0.
-    expect(find.text('0'), findsOneWidget);
-    expect(find.text('1'), findsNothing);
+    // Verifica se a splash screen aparece com texto e botão "Entrar"
+    expect(find.text('FinnTech'), findsOneWidget);
+    expect(find.text('Entrar'), findsOneWidget);
 
-    // Tap the '+' icon and trigger a frame.
-    await tester.tap(find.byIcon(Icons.add));
-    await tester.pump();
+    // Toca no botão "Entrar"
+    await tester.tap(find.text('Entrar'));
+    await tester.pumpAndSettle(); // Espera a navegação
 
-    // Verify that our counter has incremented.
-    expect(find.text('0'), findsNothing);
-    expect(find.text('1'), findsOneWidget);
+    // Verifica se navegou para a tela de login
+    expect(find.text('Bem-vindo de volta!'), findsOneWidget);
+    expect(find.text('Email*'), findsOneWidget);
+  });
+
+  testWidgets('Can navigate to Register screen from Splash', (WidgetTester tester) async {
+    await tester.pumpWidget(const FinnTechApp());
+
+    // Toca no botão "Criar conta"
+    await tester.tap(find.text('Criar conta'));
+    await tester.pumpAndSettle();
+
+    // Verifica se está na tela de cadastro
+    expect(find.text('Criar Conta'), findsOneWidget);
+    expect(find.text('Seu nome completo*'), findsOneWidget);
+  });
+
+  testWidgets('Can navigate to Forgot Password from Login', (WidgetTester tester) async {
+    await tester.pumpWidget(const FinnTechApp());
+
+    // Vai para a tela de login
+    await tester.tap(find.text('Entrar'));
+    await tester.pumpAndSettle();
+
+    // Toca no botão "Esqueceu a senha?"
+    await tester.tap(find.text('Esqueceu a senha?'));
+    await tester.pumpAndSettle();
+
+    // Verifica se está na tela de recuperação
+    expect(find.text('Esqueci a minha senha'), findsOneWidget);
+    expect(find.text('Seu email*'), findsOneWidget);
   });
 }
