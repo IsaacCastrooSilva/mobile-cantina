@@ -34,13 +34,13 @@ class SplashScreen extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Image.asset('assets/frutas.png', height: 150),
-            const SizedBox(height: 20),
+            Image.asset('assets/images/tcc.png', height: 250),
+            const SizedBox(height: 30),
             const Text(
               'FinnTech',
               style: TextStyle(
                 color: Colors.white,
-                fontSize: 26,
+                fontSize: 32,
                 fontFamily: 'Courier',
               ),
             ),
@@ -94,10 +94,30 @@ class LoginScreen extends StatelessWidget {
                 const Text('Bem-vindo de volta!\nEntre com a sua conta para continuar', style: TextStyle(color: Colors.white70)),
                 const SizedBox(height: 24),
                 const Text('E-mail', style: TextStyle(color: Colors.white)),
-                const TextField(decoration: InputDecoration(hintText: 'Email*')),
+                const TextField(
+                  keyboardType: TextInputType.emailAddress,
+                  style: TextStyle(color: Colors.white),
+                  decoration: InputDecoration(
+                    hintText: 'Email*',
+                    hintStyle: TextStyle(color: Colors.white38),
+                    filled: true,
+                    fillColor: Colors.white10,
+                    border: OutlineInputBorder(),
+                  ),
+                ),
                 const SizedBox(height: 16),
                 const Text('Senha', style: TextStyle(color: Colors.white)),
-                const TextField(obscureText: true, decoration: InputDecoration(hintText: 'Senha*')),
+                const TextField(
+                  obscureText: true,
+                  style: TextStyle(color: Colors.white),
+                  decoration: InputDecoration(
+                    hintText: 'Senha*',
+                    hintStyle: TextStyle(color: Colors.white38),
+                    filled: true,
+                    fillColor: Colors.white10,
+                    border: OutlineInputBorder(),
+                  ),
+                ),
                 const SizedBox(height: 24),
                 ElevatedButton(
                   onPressed: () {},
@@ -163,19 +183,66 @@ class RegisterScreen extends StatelessWidget {
                 const Text('FinnTech', style: TextStyle(color: Colors.grey)),
                 const SizedBox(height: 32),
                 const Text('Nome completo', style: TextStyle(color: Colors.white)),
-                const TextField(decoration: InputDecoration(hintText: 'Seu nome completo*')),
+                const TextField(
+                  style: TextStyle(color: Colors.white),
+                  decoration: InputDecoration(
+                    hintText: 'Seu nome completo*',
+                    hintStyle: TextStyle(color: Colors.white38),
+                    filled: true,
+                    fillColor: Colors.white10,
+                    border: OutlineInputBorder(),
+                  ),
+                ),
                 const SizedBox(height: 16),
                 const Text('Email', style: TextStyle(color: Colors.white)),
-                const TextField(decoration: InputDecoration(hintText: 'Email*')),
+                const TextField(
+                  style: TextStyle(color: Colors.white),
+                  decoration: InputDecoration(
+                    hintText: 'Email*',
+                    hintStyle: TextStyle(color: Colors.white38),
+                    filled: true,
+                    fillColor: Colors.white10,
+                    border: OutlineInputBorder(),
+                  ),
+                ),
                 const SizedBox(height: 16),
                 const Text('Celular', style: TextStyle(color: Colors.white)),
-                const TextField(decoration: InputDecoration(hintText: 'Celular*')),
+                const TextField(
+                  style: TextStyle(color: Colors.white),
+                  decoration: InputDecoration(
+                    hintText: 'Celular*',
+                    hintStyle: TextStyle(color: Colors.white38),
+                    filled: true,
+                    fillColor: Colors.white10,
+                    border: OutlineInputBorder(),
+                  ),
+                ),
                 const SizedBox(height: 16),
                 const Text('Senha', style: TextStyle(color: Colors.white)),
-                const TextField(obscureText: true, decoration: InputDecoration(hintText: 'Senha*')),
+                const TextField(
+                  obscureText: true,
+                  style: TextStyle(color: Colors.white),
+                  decoration: InputDecoration(
+                    hintText: 'Senha*',
+                    hintStyle: TextStyle(color: Colors.white38),
+                    filled: true,
+                    fillColor: Colors.white10,
+                    border: OutlineInputBorder(),
+                  ),
+                ),
                 const SizedBox(height: 16),
                 const Text('Confirme sua senha', style: TextStyle(color: Colors.white)),
-                const TextField(obscureText: true, decoration: InputDecoration(hintText: 'Confirme sua senha*')),
+                const TextField(
+                  obscureText: true,
+                  style: TextStyle(color: Colors.white),
+                  decoration: InputDecoration(
+                    hintText: 'Confirme sua senha*',
+                    hintStyle: TextStyle(color: Colors.white38),
+                    filled: true,
+                    fillColor: Colors.white10,
+                    border: OutlineInputBorder(),
+                  ),
+                ),
                 const SizedBox(height: 16),
                 Row(
                   children: [
@@ -229,7 +296,16 @@ class ForgotPasswordScreen extends StatelessWidget {
                 const Text('Informe o e-mail da sua conta para enviarmos um e-mail para redefinir a sua senha.', style: TextStyle(color: Colors.white70)),
                 const SizedBox(height: 16),
                 const Text('Email', style: TextStyle(color: Colors.white)),
-                const TextField(decoration: InputDecoration(hintText: 'Seu email*')),
+                const TextField(
+                  style: TextStyle(color: Colors.white),
+                  decoration: InputDecoration(
+                    hintText: 'Seu email*',
+                    hintStyle: TextStyle(color: Colors.white38),
+                    filled: true,
+                    fillColor: Colors.white10,
+                    border: OutlineInputBorder(),
+                  ),
+                ),
                 const SizedBox(height: 24),
                 ElevatedButton(
                   onPressed: () {},
