@@ -1,16 +1,52 @@
-# tcc
+# FinnTech - App de Alimentação Saudável 🥗
 
-A new Flutter project.
+Um aplicativo Flutter moderno e elegante para encontrar os melhores produtos saudáveis.
 
-## Getting Started
+## ✨ Características do Design
 
-This project is a starting point for a Flutter application.
+### 🎨 Visual Moderno
+- **Gradientes elegantes** com cores roxo e azul
+- **Animações fluidas** usando flutter_animate
+- **Tipografia moderna** com Google Fonts (Poppins)
+- **Ícones profissionais** com Font Awesome
 
-A few resources to get you started if this is your first Flutter project:
+### 🚀 Funcionalidades
+- **Tela Splash** com animações de entrada
+- **Login** com design moderno e opções sociais
+- **Registro** com validação visual
+- **Recuperação de senha** com UX intuitiva
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+### 🛠️ Tecnologias Utilizadas
+- Flutter 3.7.2+
+- Google Fonts para tipografia
+- Flutter Animate para animações
+- Font Awesome para ícones
+- Tema customizado com Material Design 3
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+## 🎯 Paleta de Cores
+- **Primária**: #6C63FF (Roxo vibrante)
+- **Secundária**: #FFE44C (Amarelo destaque)
+- **Background**: #0A0E27 (Azul escuro)
+- **Surface**: #1A1F3A (Azul médio)
+- **Card**: #252B4A (Azul claro)
+
+## 📱 Como Executar
+
+```bash
+# Instalar dependências
+flutter pub get
+
+# Executar o app
+flutter run
+```
+
+## 🎨 Componentes Customizados
+- **CustomTextField**: Campo de texto com design moderno
+- **GradientButton**: Botão com gradiente e sombras
+- **AppTheme**: Tema centralizado para consistência
+
+## 📸 Telas
+1. **Splash Screen** - Apresentação com logo e botões de ação
+2. **Login** - Autenticação com redes sociais
+3. **Registro** - Cadastro completo com validações
+4. **Recuperação** - Reset de senha com feedback visual
