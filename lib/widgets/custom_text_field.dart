@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import '../utils/responsive.dart';
 
 class CustomTextField extends StatefulWidget {
   final String label;
@@ -35,9 +36,9 @@ class _CustomTextFieldState extends State<CustomTextField> {
       children: [
         Text(
           widget.label,
-          style: const TextStyle(
+          style: TextStyle(
             color: Colors.white,
-            fontSize: 16,
+            fontSize: Responsive.sp(context, 16),
             fontWeight: FontWeight.w500,
           ),
         ),
@@ -57,7 +58,10 @@ class _CustomTextFieldState extends State<CustomTextField> {
             controller: widget.controller,
             keyboardType: widget.keyboardType,
             obscureText: widget.isPassword ? _obscureText : false,
-            style: const TextStyle(color: Colors.white, fontSize: 16),
+            style: TextStyle(
+              color: Colors.white,
+              fontSize: Responsive.sp(context, 16),
+            ),
             validator: widget.validator,
             decoration: InputDecoration(
               hintText: widget.hint,

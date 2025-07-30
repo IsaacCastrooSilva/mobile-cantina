@@ -7,8 +7,16 @@ import 'widgets/custom_text_field.dart';
 import 'widgets/gradient_button.dart';
 import 'utils/validators.dart';
 import 'screens/home_screen.dart';
+import 'screens/cart_screen.dart';
+import 'screens/profile_screen.dart';
+import 'screens/edit_profile_screen.dart';
+import 'screens/history_screen.dart';
+import 'models/cart_item.dart';
+import 'utils/responsive.dart';
+import 'utils/mobile_config.dart';
 
 void main() {
+  MobileConfig.configureMobile();
   runApp(const FinnTechApp());
 }
 
@@ -28,6 +36,10 @@ class FinnTechApp extends StatelessWidget {
         '/register': (context) => const RegisterScreen(),
         '/forgot-password': (context) => const ForgotPasswordScreen(),
         '/home': (context) => const HomeScreen(),
+        '/cart': (context) => const CartScreen(),
+        '/profile': (context) => const ProfileScreen(),
+        '/edit-profile': (context) => const EditProfileScreen(),
+        '/history': (context) => const HistoryScreen(),
       },
     );
   }
@@ -53,7 +65,7 @@ class SplashScreen extends StatelessWidget {
         ),
         child: SafeArea(
           child: Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 24),
+            padding: Responsive.paddingHorizontal(context, 6.4),
             child: Column(
               children: [
                 const Spacer(),
@@ -71,27 +83,31 @@ class SplashScreen extends StatelessWidget {
                   ),
                   child: Image.asset(
                     'assets/images/tcc.png',
-                    height: 200,
+                    height: MediaQuery.of(context).size.height * 0.25,
+                    fit: BoxFit.contain,
                   ),
                 ).animate().scale(duration: 800.ms, curve: Curves.elasticOut),
                 const SizedBox(height: 40),
                 Text(
                   'FinnTech',
                   style: GoogleFonts.poppins(
-                    fontSize: 42,
+                    fontSize: MediaQuery.of(context).size.width * 0.1,
                     fontWeight: FontWeight.bold,
                     color: Colors.white,
                     letterSpacing: 2,
                   ),
                 ).animate().fadeIn(delay: 300.ms).slideY(begin: 0.3),
                 const SizedBox(height: 16),
-                Text(
-                  'Transforme seu pedido saudável\nEncontrando os melhores produtos na nossa loja',
-                  textAlign: TextAlign.center,
-                  style: GoogleFonts.poppins(
-                    fontSize: 16,
-                    color: Colors.white.withOpacity(0.8),
-                    height: 1.5,
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 16),
+                  child: Text(
+                    'Transforme seu pedido saudável\nEncontrando os melhores produtos na nossa loja',
+                    textAlign: TextAlign.center,
+                    style: GoogleFonts.poppins(
+                      fontSize: MediaQuery.of(context).size.width * 0.04,
+                      color: Colors.white.withOpacity(0.8),
+                      height: 1.5,
+                    ),
                   ),
                 ).animate().fadeIn(delay: 600.ms).slideY(begin: 0.3),
                 const Spacer(),
@@ -100,7 +116,7 @@ class SplashScreen extends StatelessWidget {
                     GradientButton(
                       text: 'Entrar',
                       onPressed: () {
-                        Navigator.pushNamed(context, '/home');
+                        Navigator.pushNamed(context, '/login');
                       },
                     ).animate().fadeIn(delay: 900.ms).slideY(begin: 0.3),
                     const SizedBox(height: 16),
@@ -228,19 +244,7 @@ class _LoginScreenState extends State<LoginScreen> {
                       text: 'Entrar',
                       onPressed: () {
                         if (_formKey.currentState!.validate()) {
-                          ScaffoldMessenger.of(context).showSnackBar(
-                            SnackBar(
-                              content: Text(
-                                'Login realizado com sucesso!',
-                                style: GoogleFonts.poppins(),
-                              ),
-                              backgroundColor: const Color(0xFF6C63FF),
-                              behavior: SnackBarBehavior.floating,
-                              shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(12),
-                              ),
-                            ),
-                          );
+                          Navigator.pushReplacementNamed(context, '/home');
                         }
                       },
                     ).animate().fadeIn(delay: 1200.ms).slideY(begin: 0.3),
@@ -512,19 +516,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                             );
                             return;
                           }
-                          ScaffoldMessenger.of(context).showSnackBar(
-                            SnackBar(
-                              content: Text(
-                                'Conta criada com sucesso!',
-                                style: GoogleFonts.poppins(),
-                              ),
-                              backgroundColor: const Color(0xFF6C63FF),
-                              behavior: SnackBarBehavior.floating,
-                              shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(12),
-                              ),
-                            ),
-                          );
+                          Navigator.pushReplacementNamed(context, '/home');
                         }
                       },
                     ).animate().fadeIn(delay: 1200.ms).slideY(begin: 0.3),

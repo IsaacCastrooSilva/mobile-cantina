@@ -3,6 +3,7 @@ import 'package:flutter_animate/flutter_animate.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import '../theme/app_theme.dart';
+import '../utils/responsive.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -213,7 +214,10 @@ class _HomeScreenState extends State<HomeScreen> {
             },
             child: Container(
               margin: const EdgeInsets.only(right: 12),
-              padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 12),
+              padding: EdgeInsets.symmetric(
+                horizontal: Responsive.wp(context, 5),
+                vertical: 12,
+              ),
               decoration: BoxDecoration(
                 gradient: isSelected
                     ? const LinearGradient(
@@ -238,6 +242,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   style: GoogleFonts.poppins(
                     color: Colors.white,
                     fontWeight: isSelected ? FontWeight.w600 : FontWeight.w400,
+                    fontSize: Responsive.sp(context, 14),
                   ),
                 ),
               ),
@@ -252,9 +257,9 @@ class _HomeScreenState extends State<HomeScreen> {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 20),
       child: GridView.builder(
-        gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-          crossAxisCount: 2,
-          childAspectRatio: 0.8,
+        gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+          crossAxisCount: Responsive.isLargeDevice(context) ? 3 : 2,
+          childAspectRatio: Responsive.isLargeDevice(context) ? 0.9 : 0.8,
           crossAxisSpacing: 16,
           mainAxisSpacing: 16,
         ),
@@ -373,9 +378,15 @@ class _HomeScreenState extends State<HomeScreen> {
         mainAxisAlignment: MainAxisAlignment.spaceAround,
         children: [
           _buildNavItem(FontAwesomeIcons.house, 'Início', true),
-          _buildNavItem(FontAwesomeIcons.clockRotateLeft, 'Histórico', false),
+          GestureDetector(
+            onTap: () => Navigator.pushNamed(context, '/history'),
+            child: _buildNavItem(FontAwesomeIcons.clockRotateLeft, 'Histórico', false),
+          ),
           _buildNavItem(FontAwesomeIcons.heart, 'Favoritos', false),
-          _buildNavItem(FontAwesomeIcons.user, 'Perfil', false),
+          GestureDetector(
+            onTap: () => Navigator.pushNamed(context, '/profile'),
+            child: _buildNavItem(FontAwesomeIcons.user, 'Perfil', false),
+          ),
         ],
       ),
     );

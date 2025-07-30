@@ -1,14 +1,15 @@
 import 'package:flutter/material.dart';
+import '../utils/responsive.dart';
 
 class GradientButton extends StatelessWidget {
   final String text;
-  final VoidCallback onPressed;
+  final VoidCallback? onPressed;
   final bool isOutlined;
 
   const GradientButton({
     super.key,
     required this.text,
-    required this.onPressed,
+    this.onPressed,
     this.isOutlined = false,
   });
 
@@ -16,7 +17,7 @@ class GradientButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       width: double.infinity,
-      height: 56,
+      height: Responsive.hp(context, 7),
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(16),
         gradient: isOutlined
@@ -52,7 +53,7 @@ class GradientButton extends StatelessWidget {
           text,
           style: TextStyle(
             color: isOutlined ? const Color(0xFF6C63FF) : Colors.white,
-            fontSize: 18,
+            fontSize: Responsive.sp(context, 18),
             fontWeight: FontWeight.w600,
           ),
         ),
